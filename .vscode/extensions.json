@@ -1,0 +1,26 @@
+{
+  // List of extensions which should be recommended for users of this workspace.
+  "recommendations": [
+    "angular.ng-template",
+    "christian-kohler.path-intellisense",
+    "donjayamanne.githistory",
+    "davidanson.vscode-markdownlint",
+    "eamodio.gitlens",
+    "editorconfig.editorconfig",
+    "eg2.vscode-npm-script",
+    "esbenp.prettier-vscode",
+    "github.vscode-pull-request-github",
+    "humao.rest-client",
+    "mhutchie.git-graph",
+    "mrmlnc.vscode-scss",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-vscode.cmake-tools",
+    "ms-vscode.cpptools",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "msjsdiag.debugger-for-chrome",
+    "pkief.material-icon-theme",
+    "syler.sass-indented",
+    "zignd.html-css-class-completion"
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "name": "kanban-board-app",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "format": "prettier --config ./.prettierrc --write \"src/{app,environments,assets,lib}/**/*{.ts,.js,.json,.css,.scss}\"",
+    "format:check": "prettier --config ./.prettierrc --list-different \"src/{app,environments,assets,lib}/**/*{.ts,.js,.json,.css,.scss}\""
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~10.1.5",
+    "@angular/common": "~10.1.5",
+    "@angular/compiler": "~10.1.5",
+    "@angular/core": "~10.1.5",
+    "@angular/forms": "~10.1.5",
+    "@angular/platform-browser": "~10.1.5",
+    "@angular/platform-browser-dynamic": "~10.1.5",
+    "@angular/router": "~10.1.5",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1001.5",
+    "@angular/cli": "~10.1.5",
+    "@angular/compiler-cli": "~10.1.5",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^12.11.1",
+    "codelyzer": "^6.0.0",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~5.0.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~3.0.2",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "prettier": "^2.1.2",
+    "protractor": "~7.0.0",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.3.0",
+    "typescript": "~4.0.2"
+  }
+}

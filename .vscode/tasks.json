@@ -1,0 +1,103 @@
+{
+  "version": "2.0.0",
+  "type": "shell",
+  "problemMatcher": [],
+  "tasks": [
+    {
+      "label": "cmake generate",
+      "command": "cmake",
+      "args": [
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-S",
+        "${workspaceFolder}/kanban-board-service",
+        "-B",
+        "${workspaceFolder}/kanban-board-service/build"
+      ]
+    },
+    {
+      "label": "cmake generate on windows",
+      "command": "cmake",
+      "args": [
+        "-DCMAKE_BUILD_TYPE=Debug",
+        "-S",
+        "${workspaceFolder}\\kanban-board-service",
+        "-B",
+        "${workspaceFolder}\\kanban-board-service\\build",
+        "-G",
+        "'MinGW Makefiles'"
+      ]
+    },
+    {
+      "label": "cmake build",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "${workspaceFolder}/kanban-board-service/build"
+      ]
+    },
+    {
+      "label": "cmake build on windows",
+      "command": "cmake",
+      "args": [
+        "--build",
+        "${workspaceFolder}\\kanban-board-service\\build"
+      ]
+    },
+    {
+      "label": "build",
+      "dependsOn": [
+        "cmake generate",
+        "cmake build"
+      ],
+      "dependsOrder": "sequence",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "build on windows",
+      "dependsOn": [
+        "cmake generate on windows",
+        "cmake build on windows"
+      ],
+      "dependsOrder": "sequence",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "clean",
+      "windows" : {
+        "command" : "rm -r ${workspaceFolder}/kanban-board-service/build"
+      },
+      "linux" : {
+        "command": "rm -rf ${workspaceFolder}/kanban-board-service/build"
+      },
+      "osx" : {
+        "command": "rm -rf ${workspaceFolder}/kanban-board-service/build"
+      }
+    },
+    {
+      "label": "run",
+      "command": "${workspaceFolder}/kanban-board-service/build/Service",
+      "options": {
+        "cwd": "${workspaceFolder}/kanban-board-service/build"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    {
+      "label": "run on windows",
+      "command": "${workspaceFolder}\\kanban-board-service\\build\\Service.exe",
+      "options": {
+        "cwd": "${workspaceFolder}\\kanban-board-service\\build"
+      },
+      "dependsOn": [
+          "build on windows"
+      ]
+  }
+  ]
+}

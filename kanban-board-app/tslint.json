@@ -1,0 +1,132 @@
+{
+  "extends": ["tslint-config-prettier", "tslint-plugin-prettier", "tslint:recommended"],
+  "linterOptions": {
+    "exclude": ["**/*"]
+  },
+  "rules": {
+    "arrow-return-shorthand": true,
+    "callable-types": true,
+    "class-name": true,
+    "deprecation": {
+      "severity": "warn"
+    },
+    "forin": true,
+    "import-blacklist": [true, "rxjs/Rx"],
+    "interface-over-type-literal": true,
+    "member-access": false,
+    "member-ordering": [
+      true,
+      {
+        "order": ["static-field", "instance-field", "static-method", "instance-method"]
+      }
+    ],
+    "no-arg": true,
+    "no-bitwise": true,
+    "no-construct": true,
+    "no-debugger": true,
+    "no-duplicate-super": true,
+    "no-empty": false,
+    "no-empty-interface": true,
+    "no-eval": true,
+    "no-inferrable-types": [true, "ignore-params"],
+    "no-misused-new": true,
+    "no-non-null-assertion": true,
+    "no-shadowed-variable": true,
+    "no-string-literal": false,
+    "no-string-throw": true,
+    "no-switch-case-fall-through": true,
+    "no-unnecessary-initializer": true,
+    "no-unused-expression": true,
+    "no-unused-variable": false,
+    "no-var-keyword": true,
+    "object-literal-sort-keys": false,
+    "prefer-const": true,
+    "radix": true,
+    "triple-equals": [true, "allow-null-check"],
+    "unified-signatures": true,
+    "nx-enforce-module-boundaries": [
+      true,
+      {
+        "enforceBuildableLibDependency": true,
+        "allow": [],
+        "depConstraints": [
+          {
+            "sourceTag": "scope:home",
+            "onlyDependOnLibsWithTags": ["scope:home", "scope:shared"]
+          },
+          {
+            "sourceTag": "scope:logistics",
+            "onlyDependOnLibsWithTags": ["scope:logistics", "scope:shared"]
+          },
+          {
+            "sourceTag": "scope:crm",
+            "onlyDependOnLibsWithTags": ["scope:crm", "scope:shared"]
+          },
+          {
+            "sourceTag": "scope:shared",
+            "onlyDependOnLibsWithTags": ["scope:shared"]
+          }
+        ]
+      }
+    ],
+    "no-conflicting-lifecycle": true,
+    "no-host-metadata-property": true,
+    "no-input-rename": true,
+    "no-inputs-metadata-property": true,
+    "no-output-on-prefix": true,
+    "no-output-rename": true,
+    "no-outputs-metadata-property": true,
+    "template-banana-in-box": true,
+    "template-no-negated-async": true,
+    "use-lifecycle-interface": true,
+    "prettier": true,
+    "align": true,
+    "array-type": false,
+    "arrow-parens": [true, "ban-single-arg-parens"],
+    "ban-ts-ignore": false,
+    "component-class-suffix": [true, "Component"],
+    "component-selector": [true, "element", "kebab-case"],
+    "contextual-lifecycle": true,
+    "directive-class-suffix": false,
+    "directive-selector": [true, "attribute", "camelCase"],
+    "file-name-casing": [true, "kebab-case"],
+    "indent": [true, "spaces"],
+    "interface-name": false,
+    "linebreak-style": [true, "LF"],
+    "max-classes-per-file": true,
+    "max-file-line-count": [true, 1500],
+    "max-line-length": [
+      true,
+      {
+        "limit": 140,
+        "ignore-pattern": "^import |^export {(.*?)}"
+      }
+    ],
+    "no-consecutive-blank-lines": [true, 2],
+    "no-console": false,
+    "no-duplicate-imports": true,
+    "no-null-keyword": true,
+    "no-output-native": true,
+    "no-redundant-jsdoc": true,
+    "no-require-imports": true,
+    "no-var-requires": false,
+    "object-literal-key-quotes": [true, "as-needed"],
+    "ordered-imports": true,
+    "quotemark": [true, "single"],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
+    "template-i18n": [true, "check-id"],
+    "trailing-comma": false,
+    "typedef-whitespace": true,
+    "unnecessary-else": [
+      true,
+      {
+        "allow-else-if": true
+      }
+    ],
+    "use-pipe-transform-interface": true,
+    "variable-name": {
+      "options": ["check-format", "allow-leading-underscore"]
+    },
+    "whitespace": true
+  }
+}

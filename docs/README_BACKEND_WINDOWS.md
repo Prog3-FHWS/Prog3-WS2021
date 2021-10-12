@@ -68,3 +68,5 @@ pacman -S --needed base-devel mingw-w64-x86_64-toolchain mingw-w64-x86_64-cmake
 
 - open Command Palette `Ctrl+Shift+P` and run `CMake: Run without Debugging`
 - With Debugger: open Command Palette `Ctrl+Shift+P` and run `CMake: Debug`
+
+Else try https://www.devdungeon.com/content/install-gcc-compiler-windows-msys2-cc

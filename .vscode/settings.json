@@ -1,32 +1,33 @@
 {
-  "editor.formatOnSave": true,
-  "editor.tabSize": 4,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": true,
-    "source.fixAll": true
-  },
-  "terminal.integrated.env.linux": {
-    "PATH": "${env:PATH}:${workspaceFolder}/kanban-board-service/node_modules/.bin"
-  },
-  "terminal.integrated.env.osx": {
-    "PATH": "${env:PATH}:${workspaceFolder}/kanban-board-service/node_modules/.bin"
-  },
-  "terminal.integrated.env.windows": {
-    "PATH": "${env:PATH};${workspaceFolder}\\kanban-board-service\\node_modules\\.bin"
-  },
-  "git.inputValidationLength": 100,
-  "git.inputValidationSubjectLength": 100,
-  "cmake.sourceDirectory": "${workspaceFolder}/kanban-board-service",
-  "cmake.buildDirectory": "${workspaceFolder}/kanban-board-service/build",
-  "cmake.debugConfig": {
-    "cwd": "${workspaceFolder}/kanban-board-service/build"
-  },
-  "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 0}",
-  "python.testing.pytestArgs": [
-    "-v",
-    "-s"
-  ],
-  "python.testing.unittestEnabled": false,
-  "python.testing.nosetestsEnabled": false,
-  "python.testing.pytestEnabled": true
+    "editor.formatOnSave": true,
+    "editor.tabSize": 4,
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": true,
+        "source.fixAll": true
+    },
+    "terminal.integrated.env.linux": {
+        "PATH": "${env:PATH}:${workspaceFolder}/kanban-board-service/node_modules/.bin"
+    },
+    "terminal.integrated.env.osx": {
+        "PATH": "${env:PATH}:${workspaceFolder}/kanban-board-service/node_modules/.bin"
+    },
+    "terminal.integrated.env.windows": {
+        "PATH": "${env:PATH};${workspaceFolder}\\kanban-board-service\\node_modules\\.bin"
+    },
+    "git.inputValidationLength": 100,
+    "git.inputValidationSubjectLength": 100,
+    "cmake.sourceDirectory": "${workspaceFolder}/kanban-board-service",
+    "cmake.buildDirectory": "${workspaceFolder}/kanban-board-service/build",
+    "cmake.debugConfig": {
+        "cwd": "${workspaceFolder}/kanban-board-service/build"
+    },
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4, ColumnLimit: 0}",
+    "python.testing.pytestArgs": [
+        "-v",
+        "-s"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }

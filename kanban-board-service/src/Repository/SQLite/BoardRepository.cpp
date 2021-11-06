@@ -1,5 +1,6 @@
 #include "BoardRepository.hpp"
 #include "Core/Exception/NotImplementedException.hpp"
+#include <ctime>
 #include <filesystem>
 #include <string.h>
 
@@ -77,7 +78,23 @@ std::optional<Column> BoardRepository::getColumn(int id) {
 }
 
 std::optional<Column> BoardRepository::postColumn(std::string name, int position) {
-    throw NotImplementedException();
+    string sqlPostItem =
+        "INSERT INTO column('name', 'position') "
+        "VALUES('" +
+        name + "', '" + to_string(position) + "')";
+
+    int result = 0;
+    char *errorMessage = nullptr;
+
+    result = sqlite3_exec(database, sqlPostItem.c_str(), NULL, 0, &errorMessage);
+    handleSQLError(result, errorMessage);
+
+    if (SQLITE_OK == result) {
+        int columnId = sqlite3_last_insert_rowid(database);
+        return Column(columnId, name, position);
+    }
+
+    return std::nullopt;
 }
 
 std::optional<Prog3::Core::Model::Column> BoardRepository::putColumn(int id, std::string name, int position) {
@@ -97,7 +114,27 @@ std::optional<Item> BoardRepository::getItem(int columnId, int itemId) {
 }
 
 std::optional<Item> BoardRepository::postItem(int columnId, std::string title, int position) {
-    throw NotImplementedException();
+
+    time_t now = time(0);
+    char *datetime = ctime(&now);
+
+    string sqlPostItem =
+        "INSERT INTO item ('title', 'date', 'position', 'column_id') "
+        "VALUES ('" +
+        title + "', '" + datetime + "', " + to_string(position) + ", " + to_string(columnId) + ");";
+
+    int result = 0;
+    char *errorMessage = nullptr;
+
+    result = sqlite3_exec(database, sqlPostItem.c_str(), NULL, 0, &errorMessage);
+    handleSQLError(result, errorMessage);
+
+    int itemId = INVALID_ID;
+    if (SQLITE_OK == result) {
+        itemId = sqlite3_last_insert_rowid(database);
+        return Item(itemId, title, position, datetime);
+    }
+    return std::nullopt;
 }
 
 std::optional<Prog3::Core::Model::Item> BoardRepository::putItem(int columnId, int itemId, std::string title, int position) {

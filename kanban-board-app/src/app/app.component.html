@@ -1,11 +1,7 @@
-<!-- Toolbar -->
-<div class="toolbar" role="banner">
-  <img alt="Kanban Logo" src="assets/logo.png" />
-  <span>My Task Board</span>
-  <div class="spacer"></div>
-</div>
+<toolbar title="{{ title }}" color="#29b9e6"></toolbar>
 
-<!-- Main Content -->
-<div class="content" role="main"></div>
+<div class="content" role="main">
+  <board title="{{ title }}" class="board" color="#29b9e6"></board>
+</div>
 
 <router-outlet></router-outlet>

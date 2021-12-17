@@ -1,0 +1,32 @@
+<div class="column">
+  <div id="header" (mouseenter)="hoverEvent()" (mouseleave)="mouseOutEvent()">
+    <input
+      #myInput
+      type="text"
+      value="{{ columnObject.getValue() }}"
+      (change)="editValue($event)"
+    />
+
+    <trash *ngIf="showTrash" id="trash" (newClickEvent)="clickEvent()"></trash>
+  </div>
+
+  <div id="body">
+    <ul>
+      <li *ngFor="let item of columnObject.getItems()">
+        <item
+          (clickDeleteEvent)="deleteItem($event)"
+          [itemObject]="item"
+          [selectedOnCreate]="item == selectedObject"
+          color="{{ this.color }}"
+        ></item>
+      </li>
+      <li>
+        <createButton
+          (newClickEvent)="createNewItem($event)"
+          backgroundColor="#ffffff"
+          borderRadius="5px"
+        ></createButton>
+      </li>
+    </ul>
+  </div>
+</div>

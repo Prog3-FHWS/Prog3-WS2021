@@ -1,0 +1,67 @@
+.column {
+  position: relative;
+  height: auto;
+  min-height: 160px;
+  width: 100%;
+  display: block;
+  flex-direction: column;
+  background-color: #bebebe;
+  font-weight: 600;
+  overflow: auto;
+  border-radius: 10px;
+  transition: box-shadow 0.1s;
+  overflow-x: hidden;
+}
+
+.column #header {
+  background-color: #104657;
+  height: 56px;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+
+  input {
+    outline: none;
+  }
+}
+
+.column #header input {
+  margin-left: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.6em;
+  font-weight: 700;
+  width: 80%;
+  color: white;
+}
+
+.column #body {
+  position: relative;
+  overflow: auto;
+  @media screen and (orientation: landscape) and (max-device-width: 1024px) {
+    max-height: 50vh;
+  }
+  @media not screen and (orientation: landscape) and (max-device-width: 1024px) {
+    max-height: 75vh;
+  }
+}
+
+.column #body ul li {
+  margin-bottom: 12px;
+  display: block;
+  width: 100%;
+  margin-right: 10px;
+}
+
+.column #body ul {
+  margin-top: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.column #trash {
+  margin-left: auto;
+  filter: invert(100%);
+}

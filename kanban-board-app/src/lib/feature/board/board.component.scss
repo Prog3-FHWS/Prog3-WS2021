@@ -1,0 +1,29 @@
+.board {
+  position: relative;
+  left: 0px;
+  top: 70px;
+  width: 100%;
+}
+
+.board ul li {
+  display: inline-block;
+  margin-right: 25px;
+  @media screen and (min-width: 500px) {
+    width: 420px;
+  }
+  @media screen and (max-width: 499px) {
+    width: 75vw;
+  }
+  vertical-align: top;
+}
+
+.board ul {
+  @media screen and (min-width: 500px) {
+    margin-left: 40px;
+  }
+  @media screen and (max-width: 499px) {
+    justify-content: center;
+  }
+  width: fit-content;
+  white-space: nowrap;
+}

@@ -1,0 +1,19 @@
+<div class="board">
+  <ul>
+    <li *ngFor="let column of boardObject.getColumns()">
+      <column
+        (clickDeleteEvent)="deleteColumn($event)"
+        [columnObject]="column"
+        [selectedOnCreate]="column == selected"
+        color="{{ this.color }}"
+      ></column>
+    </li>
+    <li>
+      <createButton
+        (newClickEvent)="createNewColumn($event)"
+        backgroundColor="#d6d6d6"
+        borderRadius="10px"
+      ></createButton>
+    </li>
+  </ul>
+</div>

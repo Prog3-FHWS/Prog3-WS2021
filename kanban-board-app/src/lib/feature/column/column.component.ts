@@ -7,8 +7,8 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Column } from '../../data-access/column';
-import { Item } from '../../data-access/item';
+import { Column, Item } from 'src/lib/data-access/models';
+import { BackendService } from 'src/lib/data-access/services/backend.service';
 
 @Component({
   selector: 'column',
@@ -16,45 +16,67 @@ import { Item } from '../../data-access/item';
   styleUrls: ['./column.component.scss'],
 })
 export class ColumnComponent implements AfterViewInit {
-  @Input() columnObject: Column;
+  @Input() column: Column;
   @Input() selectedOnCreate: boolean;
   @Input() color: string = '#29b9e6';
-  @Output() clickDeleteEvent = new EventEmitter<number>();
+  @Output() delete = new EventEmitter<number>();
 
-  @ViewChild('myInput') myInput: ElementRef;
+  @ViewChild('columnNameInput') columnNameInput: ElementRef;
 
   showTrash: boolean = false;
-  selectedObject: Item;
+  newItemIndex: number;
   elementRef: ElementRef;
+
+  constructor(private backendService: BackendService) {}
 
   ngAfterViewInit(): void {
     if (this.selectedOnCreate) {
-      this.myInput.nativeElement.focus();
+      this.columnNameInput.nativeElement.focus();
     }
   }
 
-  hoverEvent(): void {
+  onMouseEnter(): void {
     this.showTrash = true;
   }
 
-  mouseOutEvent(): void {
+  onMouseLeave(): void {
     this.showTrash = false;
-    console.log('out');
   }
 
-  clickEvent(): void {
-    this.clickDeleteEvent.emit(this.columnObject.getID());
+  onDeleteColumn(): void {
+    this.delete.emit(this.column.id);
   }
 
-  createNewItem(input: any): void {
-    this.selectedObject = this.columnObject.addItem();
+  onCreateNewItem(): void {
+    let newItem: Item = { title: '', position: 0 };
+    this.newItemIndex = this.column.items.push(newItem) - 1;
+    newItem.position =
+      this.newItemIndex === 0
+        ? 1
+        : this.column.items[this.newItemIndex - 1].position + 1;
+
+    this.backendService
+      .createItem(this.column.id, newItem)
+      .subscribe((item) => {
+        newItem.id = item.id;
+        newItem.position = item.position;
+      });
   }
 
-  deleteItem(id: number): void {
-    this.columnObject.removeItem(id);
+  onItemDelete(itemId: number): void {
+    const index = this.column.items.findIndex((item) => item.id === itemId);
+    this.column.items.splice(index, 1);
+
+    this.backendService.deleteItem(this.column.id, itemId).subscribe();
   }
 
-  editValue(event: any): void {
-    this.columnObject.setValue(event.target.value);
+  onItemChange(item: Item): void {
+    console.log(item);
+    this.backendService.updateItem(this.column.id, item).subscribe();
+  }
+
+  onNameChange(event: KeyboardEvent): void {
+    this.column.name = (event.target as HTMLInputElement).value;
+    this.backendService.updateColumn(this.column).subscribe();
   }
 }

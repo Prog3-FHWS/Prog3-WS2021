@@ -1,10 +1,10 @@
-<div class="item" (mouseenter)="hoverEvent()" (mouseleave)="mouseOutEvent()">
+<div class="item" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
   <input
-    #myInput
+    #itemTitleInput
     type="text"
-    value="{{ itemObject.getValue() }}"
-    (change)="editValue($event)"
+    [value]="item.title"
+    (change)="onTitleChange($event)"
   />
 
-  <trash *ngIf="showTrash" id="trash" (newClickEvent)="clickEvent()"></trash>
+  <trash *ngIf="showTrash" (newClickEvent)="onDelete()"></trash>
 </div>

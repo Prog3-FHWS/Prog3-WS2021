@@ -1,18 +1,18 @@
 <div class="board">
-  <ul>
-    <li *ngFor="let column of boardObject.getColumns()">
+  <ul *ngIf="board">
+    <li *ngFor="let column of board.columns; let i = index">
       <column
-        (clickDeleteEvent)="deleteColumn($event)"
-        [columnObject]="column"
-        [selectedOnCreate]="column == selected"
-        color="{{ this.color }}"
+        [column]="column"
+        [selectedOnCreate]="newColumnIndex === i"
+        [color]="this.color"
+        (delete)="deleteColumn($event)"
       ></column>
     </li>
     <li>
       <createButton
-        (newClickEvent)="createNewColumn($event)"
         backgroundColor="#d6d6d6"
         borderRadius="10px"
+        (newClickEvent)="createNewColumn()"
       ></createButton>
     </li>
   </ul>

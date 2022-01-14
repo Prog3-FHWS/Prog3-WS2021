@@ -7,43 +7,48 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Item } from '../../data-access/item';
-
+import { Item } from 'src/lib/data-access/models';
+import { BackendService } from 'src/lib/data-access/services/backend.service';
 @Component({
   selector: 'item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss'],
 })
 export class ItemComponent implements AfterViewInit {
-  @Input() itemObject: Item;
+  @Input() item: Item;
   @Input() selectedOnCreate: boolean;
   @Input() color: string = '#29b9e6';
-  @Output() clickDeleteEvent = new EventEmitter<number>();
 
-  @ViewChild('myInput') myInput: ElementRef;
+  @Output() itemDelete = new EventEmitter<number>();
+  @Output() itemChange = new EventEmitter<Item>();
+
+  @ViewChild('itemTitleInput') itemTitleInput: ElementRef;
 
   showTrash: boolean = false;
   elementRef: ElementRef;
 
+  constructor(private backendService: BackendService) {}
+
   ngAfterViewInit(): void {
     if (this.selectedOnCreate) {
-      this.myInput.nativeElement.focus();
+      this.itemTitleInput.nativeElement.focus();
     }
   }
 
-  hoverEvent(): void {
+  onMouseEnter(): void {
     this.showTrash = true;
   }
 
-  mouseOutEvent(): void {
+  onMouseLeave(): void {
     this.showTrash = false;
   }
 
-  clickEvent(): void {
-    this.clickDeleteEvent.emit(this.itemObject.getID());
+  onDelete(): void {
+    this.itemDelete.emit(this.item.id);
   }
 
-  editValue(event: any): void {
-    this.itemObject.setValue(event.target.value);
+  onTitleChange(event: KeyboardEvent): void {
+    this.item.title = (event.target as HTMLInputElement).value;
+    this.itemChange.emit(this.item);
   }
 }

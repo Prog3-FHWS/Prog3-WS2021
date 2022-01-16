@@ -71,7 +71,6 @@ export class ColumnComponent implements AfterViewInit {
   }
 
   onItemChange(item: Item): void {
-    console.log(item);
     this.backendService.updateItem(this.column.id, item).subscribe();
   }
 

@@ -15,7 +15,7 @@ export class BackendService {
     return this.httpClient.get<Board>(this.url + '/api/board');
   }
 
-  createColumn(column: Partial<Column>): Observable<Column> {
+  createColumn(column: Column): Observable<Column> {
     let columnPayload = {
       ...column,
     };

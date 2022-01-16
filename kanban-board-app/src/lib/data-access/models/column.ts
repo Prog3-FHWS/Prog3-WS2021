@@ -1,6 +1,6 @@
 import { Item } from './item';
 
-export class Column {
+export interface Column {
   id?: number;
   name: string;
   position: number;
